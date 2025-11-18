@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getPostTranslation } from '@/lib/api';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -13,33 +14,18 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const apiUrl = process.env.ELMAPI_API_URL || 'http://localhost:8000/api';
-    const projectId = process.env.ELMAPI_PROJECT_ID || '';
-    const apiKey = process.env.ELMAPI_API_KEY;
-
-    const headers: HeadersInit = {
-      'Accept': 'application/json',
-      'project-id': projectId,
-    };
-
-    if (apiKey) {
-      headers['Authorization'] = `Bearer ${apiKey}`;
-    }
-
-    const response = await fetch(
-      `${apiUrl}/blog-posts/${uuid}?translation_locale=${locale}`,
-      { headers }
-    );
-
-    if (!response.ok) {
+    const translation = await getPostTranslation(uuid, locale);
+    
+    if (!translation) {
       return NextResponse.json(
         { error: 'Translation not found' },
-        { status: response.status }
+        { status: 404 }
       );
     }
 
-    const data = await response.json();
-    return NextResponse.json(data);
+    // Return translation directly (not wrapped in { data: ... }) 
+    // to match what LanguageSwitcher expects (translation.uuid)
+    return NextResponse.json(translation);
   } catch (error) {
     console.error('Error fetching translation:', error);
     return NextResponse.json(

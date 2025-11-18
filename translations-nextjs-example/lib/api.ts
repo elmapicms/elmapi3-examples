@@ -42,36 +42,12 @@ export async function getPosts(locale: string = 'en'): Promise<BlogPost[]> {
 
 export async function getPost(uuid: string, locale?: string): Promise<BlogPost | null> {
   try {
-    // Use fetch directly for consistency and to support locale parameter
-    const apiUrl = process.env.ELMAPI_API_URL || 'http://localhost:8000/api';
-    const projectId = process.env.ELMAPI_PROJECT_ID || '';
-    const apiKey = process.env.ELMAPI_API_KEY;
-
-    const headers: HeadersInit = {
-      'Accept': 'application/json',
-      'project-id': projectId,
-    };
-
-    if (apiKey) {
-      headers['Authorization'] = `Bearer ${apiKey}`;
-    }
-
-    // Build URL with locale if provided
-    let url = `${apiUrl}/blog-posts/${uuid}`;
-    if (locale) {
-      url += `?locale=${locale}`;
-    }
-
-    const response = await fetch(url, { headers });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-    // API returns entry directly (ContentEntryResource), but might be wrapped
-    const entry = (data?.data || data) as BlogPost;
-    return entry || null;
+    const client = getClient();
+    const params = locale ? { locale } : undefined;
+    // SDK returns response.body which contains { data: {...} }
+    const entry = await client.getEntry('blog-posts', uuid, params) as any;
+    const blogPost = (entry?.data || entry) as BlogPost;
+    return blogPost || null;
   } catch (error) {
     console.error('Error fetching post:', error);
     return null;
@@ -80,34 +56,13 @@ export async function getPost(uuid: string, locale?: string): Promise<BlogPost |
 
 export async function getPostTranslation(uuid: string, targetLocale: string): Promise<BlogPost | null> {
   try {
-    // SDK doesn't support translation_locale parameter yet
-    // Use fetch directly for translation requests
-    const apiUrl = process.env.ELMAPI_API_URL || 'http://localhost:8000/api';
-    const projectId = process.env.ELMAPI_PROJECT_ID || '';
-    const apiKey = process.env.ELMAPI_API_KEY;
-
-    const headers: HeadersInit = {
-      'Accept': 'application/json',
-      'project-id': projectId,
-    };
-
-    if (apiKey) {
-      headers['Authorization'] = `Bearer ${apiKey}`;
-    }
-
-    const response = await fetch(
-      `${apiUrl}/blog-posts/${uuid}?translation_locale=${targetLocale}`,
-      { headers }
-    );
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-    // API returns entry directly (ContentEntryResource), but might be wrapped
-    const entry = (data?.data || data) as BlogPost;
-    return entry || null;
+    const client = getClient();
+    // SDK returns response.body which contains { data: {...} }
+    const entry = await client.getEntry('blog-posts', uuid, {
+      translation_locale: targetLocale,
+    }) as any;
+    const blogPost = (entry?.data || entry) as BlogPost;
+    return blogPost || null;
   } catch (error) {
     console.error('Error fetching translation:', error);
     return null;

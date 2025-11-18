@@ -22,7 +22,7 @@ cp .env.local.example .env.local
 ```
 
 3. Update `.env.local` with your ElmapiCMS configuration:
-   - `ELMAPI_PROJECT_ID`: Your project UUID
+   - `ELMAPI_PROJECT_ID`: Your project UUID (get this from the project's API Access page in ElmapiCMS)
    - `ELMAPI_API_URL`: Your ElmapiCMS API URL
    - `ELMAPI_IMAGE_HOST`: Your image host domain
 
@@ -37,15 +37,23 @@ npm run dev
 
 ## Project Setup in ElmapiCMS
 
-This example uses the "Translations Example" project created by the seeder:
-- Project ID: `04d1f9f7-6a8c-496f-ab53-ec9fdf8a6068`
-- Collection: `blog-posts`
-- Locales: `en`, `fr`, `es`
-
 To create this project in your ElmapiCMS instance, run:
 ```bash
 php artisan db:seed --class=TranslationsExampleSeeder
 ```
+
+This creates a "Translations Example" project with:
+- Collection: `blog-posts`
+- Locales: `en`, `fr`, `es`
+
+**Getting Your Project ID:**
+
+After running the seeder, you'll need to get your Project ID:
+
+1. Go to your ElmapiCMS admin panel
+2. Navigate to the "Translations Example" project
+3. Go to **Settings > API Access**
+4. Copy the **Project ID** and paste it into your `.env.local` file
 
 ## How It Works
 

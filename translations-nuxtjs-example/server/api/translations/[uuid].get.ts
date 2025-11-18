@@ -1,3 +1,5 @@
+import { createClient } from '@elmapicms/js-sdk';
+
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const uuid = getRouterParam(event, 'uuid');
@@ -12,33 +14,26 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const apiUrl = config.public.elmapiApiUrl;
-    const projectId = config.public.elmapiProjectId;
-    const apiKey = config.elmapiApiKey;
-
-    const headers: HeadersInit = {
-      'Accept': 'application/json',
-      'project-id': projectId,
-    };
-
-    if (apiKey) {
-      headers['Authorization'] = `Bearer ${apiKey}`;
-    }
-
-    const response = await fetch(
-      `${apiUrl}/blog-posts/${uuid}?translation_locale=${locale}`,
-      { headers }
+    const client = createClient(
+      config.public.elmapiApiUrl,
+      config.elmapiApiKey || '',
+      config.public.elmapiProjectId
     );
 
-    if (!response.ok) {
+    const entry = await client.getEntry('blog-posts', uuid, {
+      translation_locale: locale,
+    }) as any;
+
+    if (!entry) {
       throw createError({
-        statusCode: response.status,
+        statusCode: 404,
         message: 'Translation not found',
       });
     }
 
-    const data = await response.json();
-    return data;
+    // Return translation directly (not wrapped in { data: ... })
+    // to match what LanguageSwitcher expects
+    return entry?.data || entry;
   } catch (error: any) {
     if (error.statusCode) {
       throw error;

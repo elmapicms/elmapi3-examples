@@ -9,7 +9,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@elmapicms/js-sdk": "^0.3.1",
+    "@elmapicms/js-sdk": "^0.4.0",
     "@nuxtjs/tailwindcss": "^6.8.4",
     "nuxt": "^3.8.0"
   },

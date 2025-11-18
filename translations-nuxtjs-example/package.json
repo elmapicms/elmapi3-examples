@@ -1,0 +1,20 @@
+{
+  "name": "translations-nuxtjs-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev",
+    "build": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@elmapicms/js-sdk": "^0.3.1",
+    "@nuxtjs/tailwindcss": "^6.8.4",
+    "nuxt": "^3.8.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
+

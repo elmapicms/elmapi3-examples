@@ -41,7 +41,7 @@ To create this project in your ElmapiCMS instance, you have two options:
 
 ### Option 1: Import JSON Template (Recommended)
 
-1. Download the `translations-example.json` file from the [examples repository](./translations-example.json)
+1. Download the `translations-example.json` file from the [examples repository](../translations-example.json)
 2. In your ElmapiCMS admin panel:
    - Go to **Dashboard** → **Create Project**
    - Select **"Import from file"** 

@@ -16,6 +16,7 @@ Examples demonstrating the translations feature, which allows you to link conten
 Examples demonstrating advanced pagination strategies with ElmapiCMS.
 
 - **[pagination-nextjs-example](./pagination-nextjs-example/)** - Next.js example with multiple pagination methods (page-based, limit/offset, infinite scroll, load more)
+- **[pagination-nuxtjs-example](./pagination-nuxtjs-example/)** - Nuxt.js example with multiple pagination methods (page-based, limit/offset, infinite scroll, load more)
 
 ## Contributing
 

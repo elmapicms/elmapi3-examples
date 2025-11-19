@@ -1,80 +1,49 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { getArticlesPage } from '@/lib/api';
 import Link from 'next/link';
+import LoadMoreButton from './load-more-button';
 
-interface Article {
-  uuid: string;
-  locale: string;
-  published_at: string | null;
-  fields: {
-    title: string;
-    slug: string;
-    content: string;
-    excerpt: string;
-    published_date: string | null;
-    category?: string;
-    views?: string;
-  };
+interface PageProps {
+  searchParams: Promise<{
+    page?: string;
+  }>;
 }
 
 const ITEMS_PER_PAGE = 10;
 
-export default function LoadMore() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
+export default async function LoadMore({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const currentPage = parseInt(params.page || '1', 10);
 
-  const loadMore = async () => {
-    if (loading || !hasMore) return;
+  // Fetch all pages up to current page
+  const allArticles = [];
+  let hasMore = true;
 
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `/api/articles?type=page&page=${page + 1}&paginate=${ITEMS_PER_PAGE}`
-      );
-      const data = await response.json();
+  for (let page = 1; page <= currentPage; page++) {
+    const { data: articles } = await getArticlesPage(page, ITEMS_PER_PAGE, {
+      locale: 'en',
+    });
 
-      if (data.data && data.data.length > 0) {
-        setArticles((prev) => [...prev, ...data.data]);
-        setHasMore(data.data.length === ITEMS_PER_PAGE);
-        setPage((prev) => prev + 1);
-      } else {
-        setHasMore(false);
+    if (articles.length > 0) {
+      allArticles.push(...articles);
+      if (articles.length < ITEMS_PER_PAGE) {
+        hasMore = false;
+        break;
       }
-    } catch (error) {
-      console.error('Error fetching articles:', error);
-      setHasMore(false);
-    } finally {
-      setLoading(false);
+    } else {
+      hasMore = false;
+      break;
     }
-  };
+  }
 
-  useEffect(() => {
-    const fetchInitial = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `/api/articles?type=page&page=1&paginate=${ITEMS_PER_PAGE}`
-        );
-        const data = await response.json();
-
-        if (data.data && data.data.length > 0) {
-          setArticles(data.data);
-          setHasMore(data.data.length === ITEMS_PER_PAGE);
-        } else {
-          setHasMore(false);
-        }
-      } catch (error) {
-        console.error('Error fetching articles:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInitial();
-  }, []);
+  // Check if there's more by fetching next page
+  if (hasMore) {
+    const { data: nextPageArticles } = await getArticlesPage(
+      currentPage + 1,
+      ITEMS_PER_PAGE,
+      { locale: 'en' }
+    );
+    hasMore = nextPageArticles.length > 0;
+  }
 
   return (
     <div className="container">
@@ -86,12 +55,12 @@ export default function LoadMore() {
         <p>Manually load more content with a button click</p>
       </header>
 
-      {articles.length === 0 && !loading ? (
+      {allArticles.length === 0 ? (
         <div className="loading">No articles found.</div>
       ) : (
         <>
           <div className="articles-list">
-            {articles.map((article) => (
+            {allArticles.map((article) => (
               <article key={article.uuid} className="article-card">
                 <div className="article-card-header">
                   <h2>{article.fields.title}</h2>
@@ -120,19 +89,14 @@ export default function LoadMore() {
             ))}
           </div>
 
-          {hasMore && (
-            <button
-              className="load-more-btn"
-              onClick={loadMore}
-              disabled={loading}
-              style={{ marginTop: '2rem' }}
-            >
-              {loading ? 'Loading...' : 'Load More'}
-            </button>
-          )}
-
-          {!hasMore && articles.length > 0 && (
-            <div className="loading" style={{ marginTop: '2rem' }}>No more articles to load.</div>
+          {hasMore ? (
+            <LoadMoreButton nextPage={currentPage + 1} />
+          ) : (
+            allArticles.length > 0 && (
+              <div className="loading" style={{ marginTop: '2rem' }}>
+                No more articles to load.
+              </div>
+            )
           )}
         </>
       )}

@@ -1,82 +1,49 @@
-'use client';
-
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { getArticlesPage } from '@/lib/api';
 import Link from 'next/link';
+import InfiniteScrollClient from './infinite-scroll-client';
 
-interface Article {
-  uuid: string;
-  locale: string;
-  published_at: string | null;
-  fields: {
-    title: string;
-    slug: string;
-    content: string;
-    excerpt: string;
-    published_date: string | null;
-    category?: string;
-    views?: string;
-  };
+interface PageProps {
+  searchParams: Promise<{
+    page?: string;
+  }>;
 }
 
 const ITEMS_PER_PAGE = 10;
 
-export default function InfiniteScroll() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-  const observerTarget = useRef<HTMLDivElement>(null);
+export default async function InfiniteScroll({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const currentPage = parseInt(params.page || '1', 10);
 
-  const fetchArticles = useCallback(async (pageNum: number) => {
-    if (loading) return;
+  // Fetch all pages up to current page
+  const allArticles = [];
+  let hasMore = true;
 
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `/api/articles?type=page&page=${pageNum}&paginate=${ITEMS_PER_PAGE}`
-      );
-      const data = await response.json();
+  for (let page = 1; page <= currentPage; page++) {
+    const { data: articles } = await getArticlesPage(page, ITEMS_PER_PAGE, {
+      locale: 'en',
+    });
 
-      if (data.data && data.data.length > 0) {
-        setArticles((prev) => [...prev, ...data.data]);
-        setHasMore(data.data.length === ITEMS_PER_PAGE);
-        setPage(pageNum);
-      } else {
-        setHasMore(false);
+    if (articles.length > 0) {
+      allArticles.push(...articles);
+      if (articles.length < ITEMS_PER_PAGE) {
+        hasMore = false;
+        break;
       }
-    } catch (error) {
-      console.error('Error fetching articles:', error);
-      setHasMore(false);
-    } finally {
-      setLoading(false);
+    } else {
+      hasMore = false;
+      break;
     }
-  }, [loading]);
+  }
 
-  useEffect(() => {
-    fetchArticles(1);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore && !loading) {
-          fetchArticles(page + 1);
-        }
-      },
-      { threshold: 1.0 }
+  // Check if there's more by fetching next page
+  if (hasMore) {
+    const { data: nextPageArticles } = await getArticlesPage(
+      currentPage + 1,
+      ITEMS_PER_PAGE,
+      { locale: 'en' }
     );
-
-    const currentTarget = observerTarget.current;
-    if (currentTarget) {
-      observer.observe(currentTarget);
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget);
-      }
-    };
-  }, [hasMore, loading, page, fetchArticles]);
+    hasMore = nextPageArticles.length > 0;
+  }
 
   return (
     <div className="container">
@@ -90,12 +57,12 @@ export default function InfiniteScroll() {
         </p>
       </header>
 
-      {articles.length === 0 && !loading ? (
+      {allArticles.length === 0 ? (
         <div className="loading">No articles found.</div>
       ) : (
         <>
           <div className="articles-list">
-            {articles.map((article) => (
+            {allArticles.map((article) => (
               <article key={article.uuid} className="article-card">
                 <div className="article-card-header">
                   <h2>{article.fields.title}</h2>
@@ -124,12 +91,7 @@ export default function InfiniteScroll() {
             ))}
           </div>
 
-          <div ref={observerTarget} style={{ height: '20px', marginTop: '2rem' }}>
-            {loading && <div className="loading">Loading more articles...</div>}
-            {!hasMore && articles.length > 0 && (
-              <div className="loading">No more articles to load.</div>
-            )}
-          </div>
+          <InfiniteScrollClient currentPage={currentPage} hasMore={hasMore} />
         </>
       )}
     </div>

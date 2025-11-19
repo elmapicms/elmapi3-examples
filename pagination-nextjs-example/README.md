@@ -60,23 +60,17 @@ After running the seeder, you'll need to get your Project ID:
 
 ## How It Works
 
-### Server-Side Pagination
-
-The page-based and limit-offset examples use Next.js Server Components:
+All pagination examples use Next.js Server Components with the SDK:
 
 1. The page component receives search parameters from the URL
 2. It calls the SDK's `getEntries()` method with pagination parameters
 3. The data is rendered on the server and sent to the client
 4. Navigation updates the URL, triggering a new server-side fetch
 
-### Client-Side Pagination
-
-The infinite scroll and load more examples use Client Components:
-
-1. The client component fetches initial data from the API route
-2. The API route uses the SDK to fetch data from ElmapiCMS
-3. As the user scrolls or clicks "Load More", additional requests are made
-4. New data is appended to the existing list
+**Infinite Scroll** and **Load More** use a hybrid approach:
+- Server Components handle data fetching and rendering
+- Small client components handle scroll detection and button clicks
+- Scroll position is preserved when loading new content
 
 ## API Usage
 

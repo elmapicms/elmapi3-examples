@@ -1,0 +1,398 @@
+{
+	"slug": "translations-example",
+	"name": "Translations Example",
+	"description": "Multilingual blog example with translations",
+	"has_demo_data": true,
+	"default_locale": "en",
+	"locales": ["en", "fr", "es"],
+	"public_api": true,
+	"collections": [
+		{
+			"name": "Blog Posts",
+			"slug": "blog-posts",
+			"is_singleton": false,
+			"fields": [
+				{
+					"type": "text",
+					"label": "Title",
+					"name": "title",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "slug",
+					"label": "Slug",
+					"name": "slug",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": "title",
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "richtext",
+					"label": "Content",
+					"name": "content",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "text",
+					"label": "Excerpt",
+					"name": "excerpt",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "date",
+					"label": "Published Date",
+					"name": "published_date",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				}
+			]
+		}
+	],
+	"demo_data": [
+		{
+			"collection": "blog-posts",
+			"entries": [
+				{
+					"id": "e1",
+					"locale": "en",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440001",
+					"fields": {
+						"title": "Welcome to Our Blog",
+						"slug": "welcome-to-our-blog",
+						"content": "<p>This is our first blog post. We are excited to share our thoughts and ideas with you.</p>",
+						"excerpt": "An introduction to our blog and what you can expect.",
+						"published_date": "2024-11-14"
+					}
+				},
+				{
+					"id": "e2",
+					"locale": "fr",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440001",
+					"fields": {
+						"title": "Bienvenue sur Notre Blog",
+						"slug": "bienvenue-sur-notre-blog",
+						"content": "<p>Ceci est notre premier article de blog. Nous sommes ravis de partager nos pensées et nos idées avec vous.</p>",
+						"excerpt": "Une introduction à notre blog et ce que vous pouvez attendre.",
+						"published_date": "2024-11-14"
+					}
+				},
+				{
+					"id": "e3",
+					"locale": "es",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440001",
+					"fields": {
+						"title": "Bienvenido a Nuestro Blog",
+						"slug": "bienvenido-a-nuestro-blog",
+						"content": "<p>Esta es nuestra primera entrada del blog. Estamos emocionados de compartir nuestros pensamientos e ideas contigo.</p>",
+						"excerpt": "Una introducción a nuestro blog y lo que puedes esperar.",
+						"published_date": "2024-11-14"
+					}
+				},
+				{
+					"id": "e4",
+					"locale": "en",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440002",
+					"fields": {
+						"title": "Getting Started with Next.js",
+						"slug": "getting-started-with-nextjs",
+						"content": "<p>Next.js is a powerful React framework that makes it easy to build modern web applications. In this post, we will explore the basics.</p>",
+						"excerpt": "Learn the fundamentals of Next.js and start building amazing applications.",
+						"published_date": "2024-11-16"
+					}
+				},
+				{
+					"id": "e5",
+					"locale": "fr",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440002",
+					"fields": {
+						"title": "Commencer avec Next.js",
+						"slug": "commencer-avec-nextjs",
+						"content": "<p>Next.js est un framework React puissant qui facilite la création d'applications web modernes. Dans cet article, nous explorerons les bases.</p>",
+						"excerpt": "Apprenez les fondamentaux de Next.js et commencez à créer des applications incroyables.",
+						"published_date": "2024-11-16"
+					}
+				},
+				{
+					"id": "e6",
+					"locale": "es",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440002",
+					"fields": {
+						"title": "Comenzando con Next.js",
+						"slug": "comenzando-con-nextjs",
+						"content": "<p>Next.js es un potente framework de React que facilita la creación de aplicaciones web modernas. En esta entrada, exploraremos los conceptos básicos.</p>",
+						"excerpt": "Aprende los fundamentos de Next.js y comienza a construir aplicaciones increíbles.",
+						"published_date": "2024-11-16"
+					}
+				},
+				{
+					"id": "e7",
+					"locale": "en",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440003",
+					"fields": {
+						"title": "Building Multilingual Websites",
+						"slug": "building-multilingual-websites",
+						"content": "<p>Creating websites that support multiple languages is essential in today's global market. Learn how to implement translations effectively.</p>",
+						"excerpt": "A guide to building websites that speak multiple languages.",
+						"published_date": "2024-11-18"
+					}
+				},
+				{
+					"id": "e8",
+					"locale": "fr",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440003",
+					"fields": {
+						"title": "Créer des Sites Web Multilingues",
+						"slug": "creer-des-sites-web-multilingues",
+						"content": "<p>Créer des sites web qui prennent en charge plusieurs langues est essentiel sur le marché mondial d'aujourd'hui. Apprenez à implémenter les traductions efficacement.</p>",
+						"excerpt": "Un guide pour créer des sites web qui parlent plusieurs langues.",
+						"published_date": "2024-11-18"
+					}
+				},
+				{
+					"id": "e9",
+					"locale": "es",
+					"status": "published",
+					"translation_group_id": "550e8400-e29b-41d4-a716-446655440003",
+					"fields": {
+						"title": "Construyendo Sitios Web Multilingües",
+						"slug": "construyendo-sitios-web-multilingues",
+						"content": "<p>Crear sitios web que admitan múltiples idiomas es esencial en el mercado global actual. Aprende a implementar traducciones de manera efectiva.</p>",
+						"excerpt": "Una guía para construir sitios web que hablen múltiples idiomas.",
+						"published_date": "2024-11-18"
+					}
+				}
+			]
+		}
+	]
+}
+

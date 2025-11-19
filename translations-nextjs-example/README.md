@@ -37,18 +37,32 @@ npm run dev
 
 ## Project Setup in ElmapiCMS
 
-To create this project in your ElmapiCMS instance, run:
-```bash
-php artisan db:seed --class=TranslationsExampleSeeder
-```
+To create this project in your ElmapiCMS instance, you have two options:
+
+### Option 1: Import JSON Template (Recommended)
+
+1. Download the `translations-example.json` file from the [examples repository](./translations-example.json)
+2. In your ElmapiCMS admin panel:
+   - Go to **Dashboard** → **Create Project**
+   - Select **"Import from file"** 
+   - Upload the `translations-example.json` file
+   - Create the project
 
 This creates a "Translations Example" project with:
 - Collection: `blog-posts`
 - Locales: `en`, `fr`, `es`
+- 3 blog posts with translations in all three languages
+
+### Option 2: Use Seeder (Legacy)
+
+If you prefer using seeders, you can still run:
+```bash
+php artisan db:seed --class=TranslationsExampleSeeder
+```
 
 **Getting Your Project ID:**
 
-After running the seeder, you'll need to get your Project ID:
+After creating the project, you'll need to get your Project ID:
 
 1. Go to your ElmapiCMS admin panel
 2. Navigate to the "Translations Example" project

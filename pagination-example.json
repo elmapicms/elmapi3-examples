@@ -1,0 +1,943 @@
+{
+	"slug": "pagination-example",
+	"name": "Pagination Example",
+	"description": "Example project demonstrating advanced pagination features",
+	"has_demo_data": true,
+	"default_locale": "tr",
+	"locales": ["tr","en"],
+	"public_api": true,
+	"collections": [
+		{
+			"name": "Articles",
+			"slug": "articles",
+			"is_singleton": false,
+			"fields": [
+				{
+					"type": "text",
+					"label": "Title",
+					"name": "title",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "slug",
+					"label": "Slug",
+					"name": "slug",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": "title",
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "richtext",
+					"label": "Content",
+					"name": "content",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "text",
+					"label": "Excerpt",
+					"name": "excerpt",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "date",
+					"label": "Published Date",
+					"name": "published_date",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "number",
+					"label": "Views",
+					"name": "views",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				},
+				{
+					"type": "text",
+					"label": "Category",
+					"name": "category",
+					"description": null,
+					"placeholder": null,
+					"options": {
+						"mode": "single",
+						"slug": {
+							"field": null,
+							"readonly": false
+						},
+						"media": {
+							"type": 1
+						},
+						"editor": {
+							"type": 1
+						},
+						"multiple": false,
+						"relation": {
+							"type": 1,
+							"collection": null
+						},
+						"repeatable": false,
+						"enumeration": {
+							"list": []
+						},
+						"hiddenInAPI": false,
+						"includeTime": false,
+						"includeDraft": false,
+						"numberOfMonths": 1,
+						"hideInContentList": false
+					},
+					"validations": {
+						"unique": {
+							"status": false,
+							"message": null
+						},
+						"required": {
+							"status": false,
+							"message": null
+						},
+						"charcount": {
+							"max": null,
+							"min": null,
+							"type": "Between",
+							"status": false,
+							"message": null
+						}
+					}
+				}
+			]
+		}
+	],
+	"demo_data": [
+		{
+			"collection": "articles",
+			"entries": [
+				{
+					"id": "e1",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 1: Understanding Technology in the Modern World",
+						"slug": "article-1-understanding-technology-modern-world",
+						"content": "<p>This is article number 1 about Technology. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Technology and its impact on modern society. Article 1.",
+						"published_date": "2024-11-19",
+						"views": "5423",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e2",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 2: Understanding Science in the Modern World",
+						"slug": "article-2-understanding-science-modern-world",
+						"content": "<p>This is article number 2 about Science. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Science and its impact on modern society. Article 2.",
+						"published_date": "2024-11-18",
+						"views": "8234",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e3",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 3: Understanding Business in the Modern World",
+						"slug": "article-3-understanding-business-modern-world",
+						"content": "<p>This is article number 3 about Business. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Business and its impact on modern society. Article 3.",
+						"published_date": "2024-11-17",
+						"views": "3124",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e4",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 4: Understanding Health in the Modern World",
+						"slug": "article-4-understanding-health-modern-world",
+						"content": "<p>This is article number 4 about Health. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Health and its impact on modern society. Article 4.",
+						"published_date": "2024-11-16",
+						"views": "6789",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e5",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 5: Understanding Education in the Modern World",
+						"slug": "article-5-understanding-education-modern-world",
+						"content": "<p>This is article number 5 about Education. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Education and its impact on modern society. Article 5.",
+						"published_date": "2024-11-15",
+						"views": "4567",
+						"category": "Education"
+					}
+				},
+				{
+					"id": "e6",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 6: Understanding Sports in the Modern World",
+						"slug": "article-6-understanding-sports-modern-world",
+						"content": "<p>This is article number 6 about Sports. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Sports and its impact on modern society. Article 6.",
+						"published_date": "2024-11-14",
+						"views": "7892",
+						"category": "Sports"
+					}
+				},
+				{
+					"id": "e7",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 7: Understanding Travel in the Modern World",
+						"slug": "article-7-understanding-travel-modern-world",
+						"content": "<p>This is article number 7 about Travel. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Travel and its impact on modern society. Article 7.",
+						"published_date": "2024-11-13",
+						"views": "6123",
+						"category": "Travel"
+					}
+				},
+				{
+					"id": "e8",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 8: Understanding Food in the Modern World",
+						"slug": "article-8-understanding-food-modern-world",
+						"content": "<p>This is article number 8 about Food. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Food and its impact on modern society. Article 8.",
+						"published_date": "2024-11-12",
+						"views": "5341",
+						"category": "Food"
+					}
+				},
+				{
+					"id": "e9",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 9: Understanding Art in the Modern World",
+						"slug": "article-9-understanding-art-modern-world",
+						"content": "<p>This is article number 9 about Art. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Art and its impact on modern society. Article 9.",
+						"published_date": "2024-11-11",
+						"views": "4125",
+						"category": "Art"
+					}
+				},
+				{
+					"id": "e10",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 10: Understanding Music in the Modern World",
+						"slug": "article-10-understanding-music-modern-world",
+						"content": "<p>This is article number 10 about Music. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Music and its impact on modern society. Article 10.",
+						"published_date": "2024-11-10",
+						"views": "7234",
+						"category": "Music"
+					}
+				},
+				{
+					"id": "e11",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 11: Understanding Finance in the Modern World",
+						"slug": "article-11-understanding-finance-modern-world",
+						"content": "<p>This is article number 11 about Finance. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Finance and its impact on modern society. Article 11.",
+						"published_date": "2024-11-09",
+						"views": "8921",
+						"category": "Finance"
+					}
+				},
+				{
+					"id": "e12",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 12: Understanding Environment in the Modern World",
+						"slug": "article-12-understanding-environment-modern-world",
+						"content": "<p>This is article number 12 about Environment. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Environment and its impact on modern society. Article 12.",
+						"published_date": "2024-11-08",
+						"views": "5678",
+						"category": "Environment"
+					}
+				},
+				{
+					"id": "e13",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 13: Understanding Fashion in the Modern World",
+						"slug": "article-13-understanding-fashion-modern-world",
+						"content": "<p>This is article number 13 about Fashion. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Fashion and its impact on modern society. Article 13.",
+						"published_date": "2024-11-07",
+						"views": "3456",
+						"category": "Fashion"
+					}
+				},
+				{
+					"id": "e14",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 14: Understanding Technology Trends in 2024",
+						"slug": "article-14-understanding-technology-trends-2024",
+						"content": "<p>This is article number 14 about Technology Trends. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Technology Trends and their impact on modern society. Article 14.",
+						"published_date": "2024-11-06",
+						"views": "9876",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e15",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 15: Understanding Science Breakthroughs in 2024",
+						"slug": "article-15-understanding-science-breakthroughs-2024",
+						"content": "<p>This is article number 15 about Science Breakthroughs. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Science Breakthroughs and their impact on modern society. Article 15.",
+						"published_date": "2024-11-05",
+						"views": "6543",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e16",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 16: Understanding Business Strategies in 2024",
+						"slug": "article-16-understanding-business-strategies-2024",
+						"content": "<p>This is article number 16 about Business Strategies. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Business Strategies and their impact on modern society. Article 16.",
+						"published_date": "2024-11-04",
+						"views": "7890",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e17",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 17: Understanding Health and Wellness in 2024",
+						"slug": "article-17-understanding-health-wellness-2024",
+						"content": "<p>This is article number 17 about Health and Wellness. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Health and Wellness and their impact on modern society. Article 17.",
+						"published_date": "2024-11-03",
+						"views": "5234",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e18",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 18: Understanding Education Innovation in 2024",
+						"slug": "article-18-understanding-education-innovation-2024",
+						"content": "<p>This is article number 18 about Education Innovation. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Education Innovation and its impact on modern society. Article 18.",
+						"published_date": "2024-11-02",
+						"views": "6781",
+						"category": "Education"
+					}
+				},
+				{
+					"id": "e19",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 19: Understanding Digital Transformation in Business",
+						"slug": "article-19-understanding-digital-transformation-business",
+						"content": "<p>This is article number 19 about Digital Transformation. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Digital Transformation and its impact on modern society. Article 19.",
+						"published_date": "2024-11-01",
+						"views": "8456",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e20",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 20: Understanding Climate Science and Solutions",
+						"slug": "article-20-understanding-climate-science-solutions",
+						"content": "<p>This is article number 20 about Climate Science. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Climate Science and its impact on modern society. Article 20.",
+						"published_date": "2024-10-31",
+						"views": "7123",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e21",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 21: Understanding Entrepreneurship in the Digital Age",
+						"slug": "article-21-understanding-entrepreneurship-digital-age",
+						"content": "<p>This is article number 21 about Entrepreneurship. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Entrepreneurship and its impact on modern society. Article 21.",
+						"published_date": "2024-10-30",
+						"views": "6234",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e22",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 22: Understanding Mental Health Awareness",
+						"slug": "article-22-understanding-mental-health-awareness",
+						"content": "<p>This is article number 22 about Mental Health. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Mental Health and its impact on modern society. Article 22.",
+						"published_date": "2024-10-29",
+						"views": "7891",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e23",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 23: Understanding Online Learning Platforms",
+						"slug": "article-23-understanding-online-learning-platforms",
+						"content": "<p>This is article number 23 about Online Learning. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Online Learning and its impact on modern society. Article 23.",
+						"published_date": "2024-10-28",
+						"views": "4567",
+						"category": "Education"
+					}
+				},
+				{
+					"id": "e24",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 24: Understanding Artificial Intelligence Applications",
+						"slug": "article-24-understanding-artificial-intelligence-applications",
+						"content": "<p>This is article number 24 about Artificial Intelligence. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Artificial Intelligence and its impact on modern society. Article 24.",
+						"published_date": "2024-10-27",
+						"views": "9123",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e25",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 25: Understanding Space Exploration Advances",
+						"slug": "article-25-understanding-space-exploration-advances",
+						"content": "<p>This is article number 25 about Space Exploration. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Space Exploration and its impact on modern society. Article 25.",
+						"published_date": "2024-10-26",
+						"views": "8345",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e26",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 26: Understanding Sustainable Business Practices",
+						"slug": "article-26-understanding-sustainable-business-practices",
+						"content": "<p>This is article number 26 about Sustainable Business. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Sustainable Business and its impact on modern society. Article 26.",
+						"published_date": "2024-10-25",
+						"views": "5678",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e27",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 27: Understanding Fitness and Nutrition",
+						"slug": "article-27-understanding-fitness-nutrition",
+						"content": "<p>This is article number 27 about Fitness and Nutrition. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Fitness and Nutrition and their impact on modern society. Article 27.",
+						"published_date": "2024-10-24",
+						"views": "7234",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e28",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 28: Understanding Remote Work Culture",
+						"slug": "article-28-understanding-remote-work-culture",
+						"content": "<p>This is article number 28 about Remote Work. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Remote Work and its impact on modern society. Article 28.",
+						"published_date": "2024-10-23",
+						"views": "6456",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e29",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 29: Understanding Quantum Computing Breakthroughs",
+						"slug": "article-29-understanding-quantum-computing-breakthroughs",
+						"content": "<p>This is article number 29 about Quantum Computing. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Quantum Computing and its impact on modern society. Article 29.",
+						"published_date": "2024-10-22",
+						"views": "8765",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e30",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 30: Understanding Marine Biology Discoveries",
+						"slug": "article-30-understanding-marine-biology-discoveries",
+						"content": "<p>This is article number 30 about Marine Biology. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Marine Biology and its impact on modern society. Article 30.",
+						"published_date": "2024-10-21",
+						"views": "5123",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e31",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 31: Understanding E-commerce Evolution",
+						"slug": "article-31-understanding-ecommerce-evolution",
+						"content": "<p>This is article number 31 about E-commerce. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to E-commerce and its impact on modern society. Article 31.",
+						"published_date": "2024-10-20",
+						"views": "7892",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e32",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 32: Understanding Preventive Healthcare",
+						"slug": "article-32-understanding-preventive-healthcare",
+						"content": "<p>This is article number 32 about Preventive Healthcare. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Preventive Healthcare and its impact on modern society. Article 32.",
+						"published_date": "2024-10-19",
+						"views": "6345",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e33",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 33: Understanding Vocational Training Programs",
+						"slug": "article-33-understanding-vocational-training-programs",
+						"content": "<p>This is article number 33 about Vocational Training. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Vocational Training and its impact on modern society. Article 33.",
+						"published_date": "2024-10-18",
+						"views": "4567",
+						"category": "Education"
+					}
+				},
+				{
+					"id": "e34",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 34: Understanding Cloud Computing Infrastructure",
+						"slug": "article-34-understanding-cloud-computing-infrastructure",
+						"content": "<p>This is article number 34 about Cloud Computing. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Cloud Computing and its impact on modern society. Article 34.",
+						"published_date": "2024-10-17",
+						"views": "8234",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e35",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 35: Understanding Genetic Research Progress",
+						"slug": "article-35-understanding-genetic-research-progress",
+						"content": "<p>This is article number 35 about Genetic Research. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Genetic Research and its impact on modern society. Article 35.",
+						"published_date": "2024-10-16",
+						"views": "7123",
+						"category": "Science"
+					}
+				},
+				{
+					"id": "e36",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 36: Understanding Marketing Strategies in 2024",
+						"slug": "article-36-understanding-marketing-strategies-2024",
+						"content": "<p>This is article number 36 about Marketing Strategies. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Marketing Strategies and their impact on modern society. Article 36.",
+						"published_date": "2024-10-15",
+						"views": "6789",
+						"category": "Business"
+					}
+				},
+				{
+					"id": "e37",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 37: Understanding Yoga and Meditation Benefits",
+						"slug": "article-37-understanding-yoga-meditation-benefits",
+						"content": "<p>This is article number 37 about Yoga and Meditation. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Yoga and Meditation and their impact on modern society. Article 37.",
+						"published_date": "2024-10-14",
+						"views": "5234",
+						"category": "Health"
+					}
+				},
+				{
+					"id": "e38",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 38: Understanding STEM Education Importance",
+						"slug": "article-38-understanding-stem-education-importance",
+						"content": "<p>This is article number 38 about STEM Education. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to STEM Education and its impact on modern society. Article 38.",
+						"published_date": "2024-10-13",
+						"views": "6123",
+						"category": "Education"
+					}
+				},
+				{
+					"id": "e39",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 39: Understanding Blockchain Technology",
+						"slug": "article-39-understanding-blockchain-technology",
+						"content": "<p>This is article number 39 about Blockchain Technology. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Blockchain Technology and its impact on modern society. Article 39.",
+						"published_date": "2024-10-12",
+						"views": "8456",
+						"category": "Technology"
+					}
+				},
+				{
+					"id": "e40",
+					"locale": "en",
+					"status": "published",
+					"fields": {
+						"title": "Article 40: Understanding Renewable Energy Solutions",
+						"slug": "article-40-understanding-renewable-energy-solutions",
+						"content": "<p>This is article number 40 about Renewable Energy. It contains detailed information and insights about the topic. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
+						"excerpt": "A comprehensive guide to Renewable Energy and its impact on modern society. Article 40.",
+						"published_date": "2024-10-11",
+						"views": "7890",
+						"category": "Science"
+					}
+				}
+			]
+		}
+	]
+}
+

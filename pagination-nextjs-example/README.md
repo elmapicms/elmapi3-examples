@@ -39,19 +39,33 @@ npm run dev
 
 ## Project Setup in ElmapiCMS
 
-To create this project in your ElmapiCMS instance, run:
-```bash
-php artisan db:seed --class=PaginationExampleSeeder
-```
+To create this project in your ElmapiCMS instance, you have two options:
+
+### Option 1: Import JSON Template (Recommended)
+
+1. Download the `pagination-example.json` file from the [examples repository](./pagination-example.json)
+2. In your ElmapiCMS admin panel:
+   - Go to **Dashboard** → **Create Project**
+   - Select **"Import from file"** 
+   - Upload the `pagination-example.json` file
+   - Create the project
 
 This creates a "Pagination Example" project with:
 - Collection: `articles`
 - Fields: `title`, `slug`, `content`, `excerpt`, `published_date`, `category`, `views`
 - Locale: `en`
+- Sample articles 
+
+### Option 2: Use Seeder (Legacy)
+
+If you prefer using seeders, you can still run:
+```bash
+php artisan db:seed --class=PaginationExampleSeeder
+```
 
 **Getting Your Project ID:**
 
-After running the seeder, you'll need to get your Project ID:
+After creating the project, you'll need to get your Project ID:
 
 1. Go to your ElmapiCMS admin panel
 2. Navigate to the "Pagination Example" project
